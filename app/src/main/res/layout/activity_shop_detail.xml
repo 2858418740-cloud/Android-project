@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_page">
+
+    <!-- 顶部工具栏（标题真正居中） -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/yellow"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="46dp"
+            android:layout_height="38dp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="6dp"
+            android:text="←"
+            android:textSize="22sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/shape_btn_toolbar"
+            android:gravity="center"
+            android:padding="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="店铺详情"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_toolbar_diancan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="12dp"
+            android:text="点餐"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_food_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- 可展开购物车面板 -->
+    <include layout="@layout/panel_cart_expanded" />
+
+    <!-- 底部购物车栏 -->
+    <LinearLayout
+        android:id="@+id/layout_cart_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_cart_bar"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:elevation="8dp">
+
+        <LinearLayout
+            android:id="@+id/layout_cart_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@android:color/transparent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🛒"
+                android:textSize="22sp"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_cart_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 份"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginEnd="12dp"/>
+
+            <TextView
+                android:id="@+id/tv_cart_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_toggle_panel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="▲"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/shape_btn_toolbar"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/btn_settle"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="  结算 ›  "
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/shape_btn_toolbar"/>
+    </LinearLayout>
+
+</LinearLayout>

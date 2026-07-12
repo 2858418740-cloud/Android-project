@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_page">
+
+    <!-- 顶部标题栏（标题真正居中） -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/yellow"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="46dp"
+            android:layout_height="38dp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="6dp"
+            android:text="←"
+            android:textSize="22sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/shape_btn_toolbar"
+            android:gravity="center"
+            android:padding="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="确认订单"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    </FrameLayout>
+
+    <!-- 支付二维码区 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/bg_card"
+        app:strokeColor="@color/yellow"
+        app:strokeWidth="2dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📱 支付二维码"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+            <ImageView
+                android:id="@+id/iv_qr_code"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/nailong_logo"
+                android:scaleType="fitCenter"
+                android:background="@color/bg_page"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_order_amount_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付金额：¥0.00"
+                android:textColor="@color/accent_red"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 配送信息区 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layout_delivery_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="6dp"
+        app:cardElevation="1dp"
+        app:cardCornerRadius="14dp"
+        app:cardBackgroundColor="@color/bg_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 配送信息"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="期望配送时间"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"/>
+
+            <EditText
+                android:id="@+id/et_delivery_time"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="例如：12:00-12:30 或 尽快送达"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:inputType="text"
+                android:background="@null"
+                android:padding="0dp"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="配送地址"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"/>
+
+            <EditText
+                android:id="@+id/et_delivery_address"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="请输入详细配送地址"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:inputType="text"
+                android:background="@null"
+                android:padding="0dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btn_select_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="选择常用地址"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_primary"
+                    android:background="@drawable/shape_btn_light"
+                    android:paddingHorizontal="12dp"
+                    android:gravity="center"/>
+
+                <CheckBox
+                    android:id="@+id/cb_save_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保存为常用地址"
+                    android:textColor="@color/text_hint"
+                    android:textSize="12sp"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 购物清单标题 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  🛒 购物清单"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"/>
+
+    <!-- 菜品列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cart_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="12dp"/>
+
+    <!-- 底部结算栏 -->
+    <LinearLayout
+        android:id="@+id/layout_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/bg_card"
+        android:elevation="8dp"
+        android:padding="16dp">
+
+        <!-- 费用明细 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="商品小计"
+                android:textColor="@color/text_hint"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/tv_subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥0.00"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="配送费"
+                android:textColor="@color/text_hint"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/tv_delivery_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥3.00"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="打包费（¥1/份）"
+                android:textColor="@color/text_hint"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/tv_packaging_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥0.00"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/divider" android:layout_marginBottom="10dp"/>
+
+        <!-- 合计 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="实付："
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/tv_order_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥0.00"
+                android:textColor="@color/accent_red"
+                android:textSize="22sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_submit_order"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="提交订单"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/shape_btn_yellow"/>
+    </LinearLayout>
+
+</LinearLayout>
